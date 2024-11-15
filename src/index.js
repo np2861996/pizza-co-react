@@ -6,42 +6,42 @@ const pizzaData = [
   {
     name: "Focaccia",
     ingredients: "Bread with italian olive oil and rosemary",
-    price: 6,
+    price: 600,
     photoName: "pizzas/focaccia.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Margherita",
     ingredients: "Tomato and mozarella",
-    price: 10,
+    price: 1000,
     photoName: "pizzas/margherita.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Spinaci",
     ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
-    price: 12,
+    price: 1200,
     photoName: "pizzas/spinaci.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Funghi",
     ingredients: "Tomato, mozarella, mushrooms, and onion",
-    price: 12,
+    price: 1200,
     photoName: "pizzas/funghi.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Salamino",
     ingredients: "Tomato, mozarella, and pepperoni",
-    price: 15,
+    price: 1500,
     photoName: "pizzas/salamino.jpg",
     soldOut: true,
   },
   {
     name: "Pizza Prosciutto",
     ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
-    price: 18,
+    price: 1800,
     photoName: "pizzas/prosciutto.jpg",
     soldOut: false,
   },
@@ -62,13 +62,14 @@ function Menu() {
   return (
     <div className="menu">
       <h2>Our Menu</h2>
-      <div className="pizza">
+      <div className="pizza ">
         {pizzaData.map((pizza) => (
           <Pizza
             pizzaname={pizza.name}
             Pizzaimage={pizza.photoName}
             pizzadesc={pizza.ingredients}
             pizzaprice={pizza.price}
+            pizzasoldOut={pizza.soldOut ? "SoldOut" : pizza.price}
           />
         ))}
       </div>
@@ -78,11 +79,11 @@ function Menu() {
 function Pizza(props) {
   console.log(props);
   return (
-    <div className="pizzas">
+    <div className={`pizzas ${props.pizzasoldOut ? "sold-out" : ""}`}>
       <img src={props.Pizzaimage} alt={props.pizzaname} />
       <h2>{props.pizzaname}</h2>
       <p>{props.pizzadesc}</p>
-      <p>{props.pizzaprice}</p>
+      <p>${props.pizzasoldOut}</p>
     </div>
   );
 }
