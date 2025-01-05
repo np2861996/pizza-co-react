@@ -97,7 +97,16 @@ function Header() {
 }
 
 function Footer() {
-  return <div className="footer">Copyright @ Nik Pizza 2024.</div>;
+  const hour = new Date().getHours();
+  const openHour = 10;
+  const closeHour = 21;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+  return (
+    <div className="footer">
+      {isOpen && <p>Shop is Open </p>}Copyright @ Nik Pizza 2024.
+    </div>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
